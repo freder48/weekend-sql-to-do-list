@@ -32,13 +32,15 @@ function renderTasks(tasks){
         
         $('#taskListBody').append(`<tr id ="row-${item.id}"data-id="${item.id}">
                                    <td>${item.tasks}</td>
-                                    <td>${item.status}</td>
-                                   <td><button class="doneBtn">Done!</button></td>
-                                   <td><button class="deleteBtn">Delete</button></td>
+                                  
+                                   <td><button class="btn btn-outline-success doneBtn">✓</button></td>
+                                   <td><button class="btn btn-outline-danger deleteBtn">X</button></td>
                                    </tr>`);
+
+                                
         
         if (item.status === 'Completed') {
-            $(`#row-${item.id}`).addClass('green');
+            $(`#row-${item.id}`).addClass('completed');
         } else {
             $(`#row-${item.id}`);
         }

@@ -12,24 +12,26 @@
         <script src="scripts/client.js"></script>
     </head>
     <body>
-        <header>
+        <header class="header">
         <h1>To Do List</h1>
+        
+
+        <section>
+            <!-- <label for="task">Create a Task</label> -->
+            <input type="text" id="inputTask" placeholder="Add a Task">
+            <button class="btn btn-outline-light"id="addBtn">Add</button>
+        </section>
         </header>
 
-        <section>
-            <label for="task">Create a Task</label>
-            <input type="text" id="inputTask">
-            <button id="addBtn">Add</button>
-        </section>
-
-        <section>
-            <h2>Task List</h2>
-            <table id="tableWrapper">
-                <thead>
+        <section class="tableStyle">
+            <!-- <h2>Task List</h2> -->
+            <table id="tableWrapper" class="table">
+                <thead class="thead-dark">
                     <tr>
-                        <th>Task</th>
+                        <!-- <th>Task</th>
                         <th>Status</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th> -->
                     </tr>
                 </thead>
                 <tbody id="taskListBody"></tbody>
