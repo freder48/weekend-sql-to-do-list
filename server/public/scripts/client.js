@@ -17,11 +17,21 @@ function getTasks() {
       url: '/tasks'
     }).then(function (response) {
       console.log(response)
-      renderTasks();
+      renderTasks(response);
     }).catch(function (error) {
       console.log('Error in client.js GET', error)
     });
   } // end getTasks
+
+function renderTasks(tasks){
+    $('#taskListBody').empty();
+    for (let item of tasks){
+        $('#taskListBody').append(`<tr>
+                                   <td>${item.tasks}</td>
+                                   <td>${item.status}</td>
+                                   </tr>`);
+    }
+}
 
 function postTask(){
     console.log('Clicked');
