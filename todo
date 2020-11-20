@@ -1,9 +1,9 @@
 TODO:
 -HTML
-[] input a task
-[] submit button
-[] table to display list and personal info
-[] list on DOM with checkboxes
+[x] input a task
+[x] submit button
+[x] table to display list and personal info
+[x] list on DOM with checkboxes
     [] complete
     [] delete
 -CLIENT
