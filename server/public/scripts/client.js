@@ -30,7 +30,7 @@ function renderTasks(tasks){
     $('#taskListBody').empty();
     for (let item of tasks){
         
-        $('#taskListBody').append(`<tr id ="${item.id}"data-id="${item.id}">
+        $('#taskListBody').append(`<tr id ="row-${item.id}"data-id="${item.id}">
                                    <td>${item.tasks}</td>
                                     <td>${item.status}</td>
                                    <td><button class="doneBtn">Done!</button></td>
@@ -38,9 +38,9 @@ function renderTasks(tasks){
                                    </tr>`);
         
         if (item.status === 'Completed') {
-            $(`#${item.id}`).addClass('green');
+            $(`#row-${item.id}`).addClass('green');
         } else {
-            $(`#${item.id}`);
+            $(`#row-${item.id}`);
         }
                                   
     }//end for loop
