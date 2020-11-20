@@ -4,4 +4,6 @@ CREATE TABLE tasks(
   "status" VARCHAR (30) DEFAULT 'Incomplete'
 );
 
-INSERT INTO "tasks" ("tasks") VALUES('Mop');
+INSERT INTO "tasks" ("tasks") VALUES('Cry');
+
+DELETE FROM tasks WHERE id=1;

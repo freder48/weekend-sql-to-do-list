@@ -5,6 +5,7 @@ $(document).ready(readyNow);
 function readyNow(){
     console.log('Hello from JQ');
     $('#addBtn').on('click', postTask);
+    $('#taskListBody').on('click', '.deleteBtn', deleteTask);
     getTasks();
 }
 
@@ -27,14 +28,30 @@ function getTasks() {
 function renderTasks(tasks){
     $('#taskListBody').empty();
     for (let item of tasks){
-        $('#taskListBody').append(`<tr>
+        $('#taskListBody').append(`<tr data-id="${item.id}">
                                    <td>${item.tasks}</td>
                                    <td>${item.status}</td>
+                                   <td><button class="deleteBtn">Delete</button></td>
                                    </tr>`);
     }//end for loop
 } //end renderTasks
 
-//start postTask function
+//start deleteTask
+function deleteTask() {
+    let taskId = $(this).closest('tr').data('id');
+    $.ajax({
+      method: 'DELETE', 
+      url: `/tasks/${taskId}`
+    }).then((function (resposne) {
+      getTasks();
+    })).catch(function(error){
+      console.log('Error in deleting task:', error);
+      alert('Something bad happened. Try again later');
+    })
+  }//end deleteTask
+
+
+  //start postTask function
 function postTask(){
     let taskToSend = {
         tasks: $('#inputTask').val(),
