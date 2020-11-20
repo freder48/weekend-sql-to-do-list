@@ -29,12 +29,20 @@ function getTasks() {
 function renderTasks(tasks){
     $('#taskListBody').empty();
     for (let item of tasks){
-        $('#taskListBody').append(`<tr data-id="${item.id}">
+        
+        $('#taskListBody').append(`<tr id ="${item.id}"data-id="${item.id}">
                                    <td>${item.tasks}</td>
-                                   <td>${item.status}</td>
+                                    <td>${item.status}</td>
                                    <td><button class="doneBtn">Done!</button></td>
                                    <td><button class="deleteBtn">Delete</button></td>
                                    </tr>`);
+        
+        if (item.status === 'Completed') {
+            $(`#${item.id}`).addClass('green');
+        } else {
+            $(`#${item.id}`);
+        }
+                                  
     }//end for loop
 } //end renderTasks
 
@@ -58,14 +66,13 @@ function postTask(){
     let taskToSend = {
         tasks: $('#inputTask').val(),
     }
-    
     $.ajax({
         type: 'POST',
         url: '/tasks',
         data: taskToSend
       }).then( function(response) {
         getTasks();
-        // emptyKoalas();
+        $('#inputTask').val('');
       }).catch( function(error) {
         console.log('Error', error);
         alert('Something bad happened. Try again later.');
@@ -83,6 +90,7 @@ function changeStatus(){
       data: taskId
   }).then( function(response) {
       getTasks();
+      
   }).catch( function(error){
       console.log('Error:', error);
       alert('Something bad happened. Try again later');
