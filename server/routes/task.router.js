@@ -45,6 +45,21 @@ todoRouter.delete('/:id', (req, res) =>{
         })
 })
 
+//PUT ROUTE 
+todoRouter.put('/:id', (req, res) => {
+    let todo = req.body;
+    let id = req.params.id;
+    let sqlText = `UPDATE tasks SET status='Completed' WHERE id=$1;`;
+    pool.query(sqlText, [id])
+    .then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error when changing transfer status', error)
+        res.sendStatus(500);
+    }) 
+    console.log(`Updating task ${id} with`, todo);
+})
+
 
 
 
