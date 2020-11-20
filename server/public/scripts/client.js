@@ -23,6 +23,7 @@ function getTasks() {
     });
   } // end getTasks
 
+  //start renderTasks
 function renderTasks(tasks){
     $('#taskListBody').empty();
     for (let item of tasks){
@@ -30,10 +31,25 @@ function renderTasks(tasks){
                                    <td>${item.tasks}</td>
                                    <td>${item.status}</td>
                                    </tr>`);
-    }
-}
+    }//end for loop
+} //end renderTasks
 
+//start postTask function
 function postTask(){
-    console.log('Clicked');
+    let taskToSend = {
+        tasks: $('#inputTask').val(),
+    }
     
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: taskToSend
+      }).then( function(response) {
+        getTasks();
+        // emptyKoalas();
+      }).catch( function(error) {
+        console.log('Error', error);
+        alert('Something bad happened. Try again later.');
+      })
+
 }
