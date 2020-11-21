@@ -1,4 +1,4 @@
-![MIT LICENSE][(https://img.shields.io/badge/License-MIT-yellow.svg)]
+![LICENSE](https://img.shields.io/github/license/freder48/weekend-sql-to-do-list?style=flat-square)
 ![REPO SIZE](https://img.shields.io/github/repo-size/freder48/weekend-sql-to-do-list.svg?style=flat-square)
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/freder48/weekend-sql-to-do-list.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/freder48/weekend-sql-to-do-list?style=social)
