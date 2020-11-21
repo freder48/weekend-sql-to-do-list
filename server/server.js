@@ -6,6 +6,8 @@ const todoRouter = require('./routes/task.router')
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('server/public'));
 
+
+
 // ROUTES
 app.use('/tasks', todoRouter);
 
