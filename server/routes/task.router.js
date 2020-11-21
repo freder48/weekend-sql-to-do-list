@@ -4,9 +4,10 @@ const pool = require('../modules/pool');
 const moment = require('moment');
 
 //GET ROUTE
+
 todoRouter.get('/', (req, res) => {
     let sqlText = `SELECT * FROM "tasks" ORDER BY "tasks";`;
-    
+    //how we communicate to the database
     pool.query(sqlText)
         .then(result => {
             res.send(result.rows);
@@ -19,9 +20,11 @@ todoRouter.get('/', (req, res) => {
 
 //POST ROUTE
 todoRouter.post('/', (req, res) => {
+    //req.body refers to taskToSend from client side
     let newTask = req.body;
     let sqlText = `INSERT INTO "tasks" ("tasks") 
                    VALUES($1);`
+    //send sqlText, and value of $1
     pool.query(sqlText, [newTask.tasks])
         .then( (result) => {
             res.sendStatus(201);
@@ -49,10 +52,15 @@ todoRouter.delete('/:id', (req, res) =>{
 
 //PUT ROUTE 
 todoRouter.put('/:id', (req, res) => {
+    //formating for time stamp on dom
     let remove = ``;
     let time_completed = moment().format('lll');
+    //refers to data being sent over, accessing value of key taskStatus
     let todo = req.body.taskStatus;
+    //accessing ${taskId} from url in PUT-want id to be the 
+    //value of variable from ${taskId}
     let id = req.params.id;
+    //set sql to empty 
     let sqlText = ``; 
     if (todo === 'Completed'){
         sqlText = `UPDATE tasks SET status='Incomplete', time_completed=$1 WHERE id=$2;`;

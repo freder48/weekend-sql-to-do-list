@@ -9,6 +9,7 @@ app.use(express.static('server/public'));
 
 
 // ROUTES
+//requests from client side come here first and then are redirected
 app.use('/tasks', todoRouter);
 
 

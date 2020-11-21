@@ -20,11 +20,10 @@ Include one or two screen shots of your project here (optional). Remove if unuse
 
 ### Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
 - [Node.js](https://nodejs.org/en/)
 - Express
 - Postgres
+- Moment
 
 
 ## Installation
@@ -39,22 +38,19 @@ Link to software that is required to install the app (e.g. node).
 ## Usage
 How does someone use this application? Tell a user story here.
 
-1. xxx
-2. xxx
-3. xxx
-4. xxx
-5. xxx
-6. xxx
+1. Type a task into input box and click Add Task, task will be generated on the webpage table.
+2. When the task is finished click the green check mark to cross off that item from the list and time stamp when it was completed.
+3. If you accidently clicked complete before the task was finished just re-click the check mark to re-instate task.
+4. To delete a task from the list click the red x button and confirm the safety catch alert.
 
 
 ## Built With
 
-List technologies and frameworks here
+jQuery, Node, Express, Postgres, JavaScript, HTML/CSS, SweetAlert/Bootstrap, Moment, Postico
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
-_Note, include this only if you have a license file. GitHub will generate one for you if you want!_
+![MIT LICENSE](https://img.shields.io/github/license/freder48/weekend-sql-to-do-list.svg?style=flat-square)
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. 
