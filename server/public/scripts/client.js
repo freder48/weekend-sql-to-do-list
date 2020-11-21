@@ -30,9 +30,8 @@ function renderTasks(tasks){
     $('#taskListBody').empty();
     for (let item of tasks){
         
-        $('#taskListBody').append(`<tr id ="row-${item.id}"data-id="${item.id}">
+        $('#taskListBody').append(`<tr id ="row-${item.id}" data-id="${item.id}" data-status="${item.status}">
                                    <td>${item.tasks}</td>
-                                  
                                    <td><button class="btn btn-outline-success doneBtn">✓</button></td>
                                    <td><button class="btn btn-outline-danger deleteBtn">X</button></td>
                                    </tr>`);
@@ -85,11 +84,12 @@ function postTask(){
 //start changeStatus function
 function changeStatus(){
     let taskId = $(this).closest('tr').data('id');
-    console.log(taskId);
+    let taskStatus = $(this).closest('tr').data('status');
+    console.log(taskStatus);
     $.ajax({
       method: 'PUT',
       url: `/tasks/${taskId}`, 
-      data: taskId
+      data: {taskStatus: taskStatus}
   }).then( function(response) {
       getTasks();
       
