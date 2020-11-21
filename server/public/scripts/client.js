@@ -9,7 +9,9 @@ function readyNow(){
     $('#taskListBody').on('click', '.deleteBtn', deleteTask);
     $('#taskListBody').on('click', '.doneBtn', changeStatus);
     getTasks();
+    Swal.fire('Hello world!')
 }
+
 
 //start getTasks
 function getTasks() {
@@ -52,15 +54,34 @@ function renderTasks(tasks){
 //start deleteTask
 function deleteTask() {
     let taskId = $(this).closest('tr').data('id');
-    $.ajax({
-      method: 'DELETE', 
-      url: `/tasks/${taskId}`
-    }).then((function (resposne) {
-      getTasks();
-    })).catch(function(error){
-      console.log('Error in deleting task:', error);
-      alert('Something bad happened. Try again later');
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this task!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
     })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Poof! Your imaginary task has been deleted!", {
+          icon: "success",
+        });
+        $.ajax({
+          method: 'DELETE', 
+          url: `/tasks/${taskId}`
+        }).then((function (response) {
+          getTasks();
+        })).catch(function(error){
+          console.log('Error in deleting task:', error);
+          alert('Something bad happened. Try again later');
+        })
+      } else {
+        swal("Your task is safe!");
+      }
+    });
+
+
+  
   }//end deleteTask
 
 
@@ -85,6 +106,7 @@ function postTask(){
 
 //start changeStatus function
 function changeStatus(){
+  
     let taskId = $(this).closest('tr').data('id');
     let taskStatus = $(this).closest('tr').data('status');
     console.log(taskStatus);
