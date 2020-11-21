@@ -48,9 +48,7 @@ tr:hover {
     background: #ddd;
   }
 
-
 .completed {
     background: 	#909090;
     color: white;
     text-decoration: line-through;
-}

@@ -1,10 +1,12 @@
 const express = require('express');
 const todoRouter = express.Router();
 const pool = require('../modules/pool');
+const moment = require('moment');
 
 //GET ROUTE
 todoRouter.get('/', (req, res) => {
-    let sqlText = `SELECT * FROM "tasks" ORDER BY "status";`;
+    let sqlText = `SELECT * FROM "tasks" ORDER BY "tasks";`;
+    
     pool.query(sqlText)
         .then(result => {
             res.send(result.rows);
@@ -47,18 +49,34 @@ todoRouter.delete('/:id', (req, res) =>{
 
 //PUT ROUTE 
 todoRouter.put('/:id', (req, res) => {
-    let todo = req.body;
+    let remove = ``;
+    let time_completed = moment().format('lll');
+    let todo = req.body.taskStatus;
     let id = req.params.id;
-    let sqlText = `UPDATE tasks SET status='Completed' WHERE id=$1;`;
-    pool.query(sqlText, [id])
-    .then((result) => {
-        res.sendStatus(200);
-    }).catch((error) => {
-        console.log('Error when changing transfer status', error)
-        res.sendStatus(500);
-    }) 
-    console.log(`Updating task ${id} with`, todo);
+    let sqlText = ``; 
+    if (todo === 'Completed'){
+        sqlText = `UPDATE tasks SET status='Incomplete', time_completed=$1 WHERE id=$2;`;
+        pool.query(sqlText, [remove, id])
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('Error when changing transfer status', error)
+            res.sendStatus(500);
+        }) 
+    } else { 
+        sqlText = `UPDATE tasks SET status='Completed', time_completed=$1 WHERE id=$2;`;
+        pool.query(sqlText, [time_completed, id])
+        .then((result) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('Error when changing transfer status', error)
+            res.sendStatus(500);
+        }) 
+    }
+
+  
 })
+
 
 
 
