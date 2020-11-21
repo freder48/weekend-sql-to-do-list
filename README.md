@@ -50,10 +50,16 @@ jQuery, Node, Express, Postgres, JavaScript, HTML/CSS, SweetAlert/Bootstrap, Mom
 
 ## License
 
-![MIT LICENSE](https://img.shields.io/github/license/freder48/weekend-sql-to-do-list.svg?style=flat-square)
+![LICENSE](https://img.shields.io/github/license/freder48/weekend-sql-to-do-list?style=flat-square)
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. 
+
+My Vatti Group One Team: 
+-[Julian Booher](https://github.com/julianbooher)
+-[Kimberly Orchard](https://github.com/yyerthao)
+-[Steven Maloney](https://github.com/sdeda1us)
+-[Brady Braker](https://github.com/bradybaker)
 
 ## Support
 If you have suggestions or issues, please email me at [jfredericksen12@gmail.com](www.google.com)
