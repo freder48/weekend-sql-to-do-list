@@ -17,8 +17,6 @@ todoRouter.get('/', (req, res) => {
         });
 })
 
-
-
 //POST ROUTE
 todoRouter.post('/', (req, res) => {
     let newTask = req.body;
@@ -51,13 +49,14 @@ todoRouter.delete('/:id', (req, res) =>{
 
 //PUT ROUTE 
 todoRouter.put('/:id', (req, res) => {
-    let time_completed = moment().toISOString();
+    let remove = ``;
+    let time_completed = moment().format('lll');
     let todo = req.body.taskStatus;
     let id = req.params.id;
     let sqlText = ``; 
     if (todo === 'Completed'){
-        sqlText = `UPDATE tasks SET status='Incomplete' WHERE id=$1;`;
-        pool.query(sqlText, [id])
+        sqlText = `UPDATE tasks SET status='Incomplete', time_completed=$1 WHERE id=$2;`;
+        pool.query(sqlText, [remove, id])
         .then((result) => {
             res.sendStatus(200);
         }).catch((error) => {

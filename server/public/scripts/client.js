@@ -32,7 +32,7 @@ function renderTasks(tasks){
     for (let item of tasks){
         
         $('#taskListBody').append(`<tr id ="row-${item.id}" data-id="${item.id}" data-status="${item.status}">
-                                   <td>${item.tasks}</td>
+                                   <td class="crossOut">${item.tasks}</td>
                                    <td>${item.time_completed}</td>
                                    <td><button class="btn btn-outline-success doneBtn">✓</button></td>
                                    <td><button class="btn btn-outline-danger deleteBtn">X</button></td>
