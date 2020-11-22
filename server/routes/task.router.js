@@ -62,6 +62,7 @@ todoRouter.put('/:id', (req, res) => {
     let id = req.params.id;
     //set sql to empty 
     let sqlText = ``; 
+    //toggle task from completed to incomplete in this conditional
     if (todo === 'Completed'){
         sqlText = `UPDATE tasks SET status='Incomplete', time_completed=$1 WHERE id=$2;`;
         pool.query(sqlText, [remove, id])
@@ -81,8 +82,6 @@ todoRouter.put('/:id', (req, res) => {
             res.sendStatus(500);
         }) 
     }
-
-  
 })
 
 
