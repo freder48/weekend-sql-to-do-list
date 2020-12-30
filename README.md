@@ -12,7 +12,7 @@ Duration: 10 hrs
 This program is designed to create to-do lists personalized by its users. Users can add a task to the list utilizing the input box. The task is generated on the DOM and stored in the database. Users can then "check" the task when it is complete to time stamp it and cross it out. Users also have the option to delete a list item when they are finished with it. 
 
 
-To see the fully functional site, please visit: [DEPLOYED VERSION OF APP](www.heroku.com)
+To see the fully functional site, please visit: [Heroku](https://evening-inlet-50401.herokuapp.com/)
 
 ## Screen Shot
 
